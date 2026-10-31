@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap");
+@import "tailwindcss";
+
+/*
+  Design tokens for the SoftCrowd rebrand.
+  Both headings and body copy run on Poppins — matching the font used on
+  jobs.softcrowdtechnologies.com — so `font-sans` and `font-serif` both
+  point at it and every existing heading/body class picks it up automatically.
+*/
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* Softcrowd brand palette, pulled straight from the logo mark. */
+  --color-brand-blue: #00aeef;
+  --color-brand-gray: #58595b;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fbfbfa;
+}
+
+::selection {
+  background-color: #00aeef;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #00aeef;
+  outline-offset: 2px;
+}
+
+/* Signature mark: a code-bracket motif used as the brand's recurring
+   structural device instead of generic uppercase eyebrow labels. */
+.brkt {
+  font-family: "Poppins", monospace;
+  font-weight: 600;
+  color: #00aeef;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
