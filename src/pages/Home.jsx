@@ -693,16 +693,28 @@ const Hero = () => {
 
   const togglePlay = () => {
     if (!videoRef.current) return;
+
     if (playing) {
       videoRef.current.pause();
     } else {
       videoRef.current.play();
     }
+
     setPlaying(!playing);
   };
 
+  const technologies = [
+    "React.js",
+    "Node.js",
+    "Flutter",
+    "React Native",
+    "MongoDB",
+    "PHP / Laravel",
+  ];
+
   return (
     <section className="relative h-[100vh] min-h-[640px] w-full overflow-hidden bg-slate-900">
+      {/* Existing background video */}
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
@@ -715,43 +727,81 @@ const Hero = () => {
         <source src={heroVideo} type="video/mp4" />
       </video>
 
+      {/* Existing dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/40" />
 
+      {/* Hero content */}
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-3 pb-16 lg:px-5 lg:pb-20">
         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
           <span className="brkt text-sm">&lt;/&gt;</span>
           Welcome to SoftCrowd Technologies
         </div>
 
-        <h1 className="mt-6 max-w-2xl font-serif text-5xl font-bold leading-[1.05] text-slate-50 sm:text-6xl lg:text-7xl">
-          Instant IT solutions for your business
+        <h1 className="mt-6 max-w-4xl font-serif text-3xl font-bold leading-[1.12] text-slate-50 sm:text-4xl md:text-5xl lg:text-6xl">
+          Full-Stack Web, Mobile & Cloud Application Engineering
         </h1>
 
-        <p className="mt-6 max-w-lg text-white/70">
-          A Nashik-based web development and digital marketing company
-          offering full-cycle IT solutions for small, medium, and large
-          businesses.
+        <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base">
+          Custom software development and dedicated sprint teams.
+          Engineering scalable web portals, REST APIs, and
+          native/cross-platform mobile apps.
         </p>
 
-        <a
-          href="/contact"
-          className="group mt-8 inline-flex w-fit items-center gap-3 border border-white/40 px-8 py-5 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-white hover:text-slate-900"
-        >
-          Contact Us
-          <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5" />
-        </a>
+        {/* Technology badges */}
+        <div className="mt-6 flex max-w-3xl flex-wrap gap-2">
+          {technologies.map((technology) => (
+            <span
+              key={technology}
+              className="rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 backdrop-blur-sm"
+            >
+              {technology}
+            </span>
+          ))}
+        </div>
+
+        {/* Two CTA buttons */}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="#schedule-call"
+            className="group inline-flex w-fit items-center justify-center gap-3 rounded-lg bg-sky-600 px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
+          >
+            Schedule Technical Call
+            <ArrowUpRight
+              size={17}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </a>
+
+          <a
+            href="#tech-stack"
+            className="group inline-flex w-fit items-center justify-center gap-3 border border-white/40 px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-slate-900"
+          >
+            View Tech Stack & Projects
+            <ArrowRight
+              size={16}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </a>
+        </div>
       </div>
 
+      {/* Existing video play/pause control */}
       <button
+        type="button"
         onClick={togglePlay}
         aria-label={playing ? "Pause video" : "Play video"}
         className="absolute bottom-8 right-6 z-10 flex h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-white/20 lg:right-8"
       >
-        {playing ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+        {playing ? (
+          <Pause size={18} />
+        ) : (
+          <Play size={18} className="ml-0.5" />
+        )}
       </button>
     </section>
   );
 };
+
 
 /* --------------------------- Industries marquee --------------------------- */
 
@@ -1280,6 +1330,7 @@ const Home = () => {
       <OurServices />
       <StatsGrid />
       <Testimonials />
+
     </>
   );
 };
