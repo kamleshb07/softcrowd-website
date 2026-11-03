@@ -64,6 +64,7 @@ import Solutions from "./components/Solutions";
 import TechStack from "./components/TechStack";
 import DedicatedDevelopers from "./components/DedicatedDevelopers";
 import BookingSection from "./components/BookingSection";
+import CaseStudies from "./components/case-studies/CaseStudies";
 
 // Existing pages
 import About from "./pages/About";
@@ -100,6 +101,7 @@ const App = () => {
             element={<DedicatedDevelopers />}
           />
           <Route path="/schedule-call" element={<BookingSection />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
 
           {/* Existing pages */}
           <Route path="/about" element={<About />} />

@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   Code2,
   ExternalLink,
-  Github,
   Image as ImageIcon,
   X,
 } from "lucide-react";
@@ -234,7 +233,7 @@ const CaseStudyModal = ({ project, onClose }) => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-700"
                 >
-                  <Github size={16} /> Repository <ArrowUpRight size={15} />
+                  <Code2 size={16} /> Repository <ArrowUpRight size={15} />
                 </a>
               )}
             </section>

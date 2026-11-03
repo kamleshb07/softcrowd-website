@@ -29,7 +29,7 @@ const badgesByPlacement = {
   hero: ["code-ownership"],
   booking: ["nda-protection"],
   developers: ["engineering-standards"],
-  footer: ["code-ownership"],
+  footer: ["code-ownership", "nda-protection"],
 };
 
 /**
@@ -39,7 +39,7 @@ const badgesByPlacement = {
  * - "hero": 100% Code Ownership (below the primary Hero CTA)
  * - "booking": Mutual NDA Guaranteed (Contact / Booking section)
  * - "developers": Modern Engineering Standards (Dedicated Developers section)
- * - "footer": 100% Code Ownership (Footer)
+ * - "footer": 100% Code Ownership + Mutual NDA Guaranteed (Footer)
  * - "all": all three badges in a responsive grid (default)
  */
 const TrustBadges = ({ placement = "all", className = "" }) => {
