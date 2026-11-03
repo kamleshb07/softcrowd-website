@@ -574,26 +574,8 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav
             aria-label="Main navigation"
-            className="hidden flex-1 items-center justify-end gap-4 pr-4 xl:flex"
+            className="hidden flex-1 items-center justify-end gap-5 pr-4 xl:flex"
           >
-            <Link to="/" className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}>
-              Home
-            </Link>
-
-            <Link to="/about" className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}>
-              About us
-            </Link>
-
-            <ServicesMenu lightHeader={lightHeader} />
-
-            <Link to="/blogs" className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}>
-              Blogs
-            </Link>
-
-            <Link to="/contact" className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}>
-              Contact us
-            </Link>
-
             {navItems.map((item) => (
               <Link
                 key={item.label}
@@ -660,48 +642,6 @@ const Header = () => {
             aria-label="Expanded navigation"
             className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-3 px-7 py-10 sm:px-12"
           >
-            {/* Original Navigation */}
-            <Link to="/" onClick={closeMobileMenu} className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400">
-              Home
-            </Link>
-
-            <Link to="/about" onClick={closeMobileMenu} className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400">
-              About us
-            </Link>
-
-            {/* Services and all its links */}
-            <div className="border-b border-white/10 py-3">
-              <p className="mb-3 text-xl font-semibold text-white">Services</p>
-
-              {servicesMenu.map((category) => (
-                <div key={category.label} className="mb-4">
-                  <p className="mb-2 text-sm font-semibold text-sky-400">
-                    {category.label}
-                  </p>
-
-                  {category.items.map((item) => (
-                    <Link
-                      key={item.title}
-                      to={item.to}
-                      onClick={closeMobileMenu}
-                      className="block py-2 pl-3 text-base text-white/75 hover:text-sky-400"
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              ))}
-            </div>
-
-            <Link to="/blogs" onClick={closeMobileMenu} className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400">
-              Blogs
-            </Link>
-
-            <Link to="/contact" onClick={closeMobileMenu} className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400">
-              Contact us
-            </Link>
-
-            {/* New Navigation */}
             {navItems.map((item) => (
               <Link
                 key={item.label}

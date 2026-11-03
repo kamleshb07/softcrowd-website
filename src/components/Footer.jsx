@@ -433,7 +433,9 @@ const socialLinks = [
 
 // "Important Links" — same set as the reference, minus Terms & Privacy.
 const importantLinks = [
+  { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
+  { label: "Tech Stack", to: "/tech-stack" },
   { label: "Case Studies", to: "/case-studies" },
   { label: "Blogs", to: "/blogs" },
   { label: "Contact Us", to: "/contact" },
