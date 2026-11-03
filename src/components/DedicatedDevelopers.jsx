@@ -5,7 +5,6 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
-import TrustBadges from "./TrustBadges";
 
 const developerRoles = [
   {
@@ -102,6 +101,46 @@ const DedicatedDevelopers = () => {
             );
           })}
         </div>
+        
+        {/* Modern Engineering Standards */}
+        <div className="mt-10 rounded-2xl border border-sky-400/20 bg-sky-400/[0.05] p-7 sm:p-9">
+          <div className="mb-6 text-center">
+            <span className="inline-block rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-sky-400">
+              Engineering Excellence
+            </span>
+
+            <h3 className="mt-4 text-2xl font-bold text-white">
+              Modern Engineering Standards
+            </h3>
+
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-300">
+              We follow modern development practices to maintain code quality,
+              collaboration, reliability and transparent project delivery.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              "Git Branching & Version Control",
+              "CI/CD Pipelines",
+              "Automated Testing",
+              "Sprint Tracking via Jira / ClickUp",
+            ].map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4"
+              >
+                <CheckCircle2
+                  size={20}
+                  className="shrink-0 text-sky-400"
+                />
+                <span className="text-sm font-medium text-slate-200">
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* CTA */}
         <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border border-white/10 bg-white/[0.04] p-7 sm:flex-row sm:p-9">
@@ -123,7 +162,6 @@ const DedicatedDevelopers = () => {
             <ArrowRight size={17} />
           </a>
         </div>
-        <TrustBadges placement="developers" className="mt-10" />
       </div>
     </section>
   );

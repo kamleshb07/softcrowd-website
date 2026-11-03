@@ -650,7 +650,6 @@ import {
 import heroVideo from "../assets/images/softcrowd-hero-vid.mp4";
 import heroPoster from "../assets/images/why-choose-us.jpg";
 import aboutImage from "../assets/images/why-choose-us.jpg";
-import TrustBadges from "../components/TrustBadges";
 
 /* --------------------------------- Data --------------------------------- */
 
@@ -784,7 +783,6 @@ const Hero = () => {
             />
           </a>
         </div>
-        <TrustBadges placement="hero" className="mt-6" />
       </div>
 
       {/* Existing video play/pause control */}

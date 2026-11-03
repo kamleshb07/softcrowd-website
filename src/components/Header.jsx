@@ -306,62 +306,12 @@
 
 //------------------------------------------------
 
-
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import {
-  Menu,
-  X,
-  ArrowRight,
-  ChevronDown,
-  Code2,
-  Briefcase,
-  Building2,
-  Factory,
-  GraduationCap,
-  Rocket,
-} from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 import logoFull from "../assets/images/softcrowd-logo-full.png";
 import logoFullWhite from "../assets/images/softcrowd-logo-full-white.png";
-
-const servicesMenu = [
-  {
-    label: "Development",
-    icon: Code2,
-    items: [
-      { title: "Custom Web Application Development", to: "/web-application" },
-      { title: "Digital Marketing Solution Provider", to: "/digital-marketing-solution-provider" },
-      { title: "Bulk SMS and Email Marketing", to: "/bulk-sms-and-email-marketing" },
-      { title: "Hire Web and Mobile App Developers", to: "/hire-web-and-mobile-app-developers" },
-    ],
-  },
-  {
-    label: "Career",
-    icon: Briefcase,
-    items: [{ title: "View Open Positions", to: "/careers" }],
-  },
-  {
-    label: "Corporate Training",
-    icon: Building2,
-    items: [{ title: "Corporate Training Program", to: "/corporate-training" }],
-  },
-  {
-    label: "Industrial Training",
-    icon: Factory,
-    items: [{ title: "Industrial Training Program", to: "/industrial-training" }],
-  },
-  {
-    label: "College Training",
-    icon: GraduationCap,
-    items: [{ title: "College Training Program", to: "/college-training" }],
-  },
-  {
-    label: "Internship",
-    icon: Rocket,
-    items: [{ title: "Internship Program", to: "/internship" }],
-  },
-];
 
 const navItems = [
   { label: "Solutions", to: "/solutions" },
@@ -381,106 +331,6 @@ const Logo = ({ dark }) => (
   />
 );
 
-const ServicesMenu = ({ lightHeader }) => {
-  const [activeCategory, setActiveCategory] = useState(0);
-  const [open, setOpen] = useState(false);
-  const current = servicesMenu[activeCategory];
-
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        type="button"
-        onClick={() => setOpen((previous) => !previous)}
-        aria-expanded={open}
-        className={`flex items-center gap-1.5 whitespace-nowrap text-[14px] font-semibold transition-colors 2xl:text-[15px] ${
-          lightHeader
-            ? "text-slate-800 hover:text-sky-600"
-            : "text-white hover:text-sky-300"
-        }`}
-      >
-        Services
-        <ChevronDown
-          size={16}
-          className={`transition-transform ${open ? "rotate-180" : ""}`}
-        />
-      </button>
-
-      {open && (
-        <div className="absolute left-1/2 top-full z-50 w-[min(1180px,95vw)] -translate-x-1/2 pt-4">
-          <div className="flex min-h-[420px] overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-2xl">
-
-            <div className="w-72 shrink-0 bg-slate-900 py-6">
-              {servicesMenu.map((category, index) => (
-                <button
-                  key={category.label}
-                  type="button"
-                  onMouseEnter={() => setActiveCategory(index)}
-                  onClick={() => setActiveCategory(index)}
-                  className={`flex w-full items-center gap-3 border-l-[3px] px-6 py-4 text-left text-[15px] font-medium transition-colors ${
-                    activeCategory === index
-                      ? "border-sky-400 bg-white/10 text-white"
-                      : "border-transparent text-white/70 hover:bg-white/5 hover:text-white"
-                  }`}
-                >
-                  <category.icon size={19} />
-                  {category.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex-1 p-8">
-              <p className="text-xl font-semibold text-slate-900">
-                {current.label}
-              </p>
-              <div className="mt-2 h-px w-16 bg-sky-500" />
-
-              <ul className="mt-6 space-y-2">
-                {current.items.map((item) => (
-                  <li key={item.title}>
-                    <Link
-                      to={item.to}
-                      onClick={() => setOpen(false)}
-                      className="block rounded-lg px-4 py-3 text-[15px] font-medium text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-600"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="w-72 shrink-0 border-l border-slate-100 bg-slate-50 p-7">
-              <p className="text-lg font-semibold text-slate-900">
-                Built in Nashik
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-slate-500">
-                One team behind every service, from custom development to
-                training programs.
-              </p>
-              <Link
-                to="/about"
-                onClick={() => setOpen(false)}
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-600 hover:underline"
-              >
-                Meet the team
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-const WHATSAPP_LINK =
-  "https://wa.me/917447444874?text=Hi%20Softcrowd%2C%20I%20have%20an%20Enquiry%20about%20your%20services.%20Please%20share%20more%20details.";
-
 const WhatsAppIcon = () => (
   <svg
     viewBox="0 0 24 24"
@@ -492,6 +342,7 @@ const WhatsAppIcon = () => (
     <path d="M20.52 3.48A11.82 11.82 0 0 0 12.09 0C5.53 0 .2 5.33.2 11.89c0 2.1.55 4.15 1.6 5.96L.1 24l6.3-1.65a11.87 11.87 0 0 0 5.69 1.45h.01c6.56 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.17-3.47-8.43ZM12.1 21.8a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.64-.24-.38a9.85 9.85 0 0 1-1.51-5.28c0-5.45 4.43-9.88 9.88-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 7c0 5.45-4.43 9.89-9.88 9.89Zm5.42-7.4c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z" />
   </svg>
 );
+const WHATSAPP_LINK ="https://wa.me/917447444874?text=Hi%20Softcrowd%2C%20I%20have%20an%20Enquiry%20about%20your%20services.%20Please%20share%20more%20details.";
 
 const Header = () => {
   const location = useLocation();
@@ -574,13 +425,13 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav
             aria-label="Main navigation"
-            className="hidden flex-1 items-center justify-end gap-5 pr-4 xl:flex"
+            className="hidden flex-1 items-center justify-end gap-6 pr-5 2xl:gap-7 xl:flex"
           >
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.to}
-                className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}
+                className={`whitespace-nowrap text-[14px] font-semibold transition-colors 2xl:text-[15px] ${navTextClass}`}
               >
                 {item.label}
               </Link>
@@ -640,15 +491,19 @@ const Header = () => {
           {/* Menu Links */}
           <nav
             aria-label="Expanded navigation"
-            className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-3 px-7 py-10 sm:px-12"
+            className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center gap-2 px-7 py-10 sm:px-12"
           >
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <Link
                 key={item.label}
                 to={item.to}
                 onClick={closeMobileMenu}
-                className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400"
+                className="flex items-center border-b border-white/10 py-5 text-xl font-semibold text-white transition-colors hover:text-sky-400 sm:text-2xl"
               >
+                <span className="mr-5 text-sm font-medium text-sky-500">
+                  0{index + 1}
+                </span>
+
                 {item.label}
               </Link>
             ))}

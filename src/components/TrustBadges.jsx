@@ -70,7 +70,13 @@ const TrustBadges = ({ placement = "all", className = "" }) => {
             isFooter
               ? "border-white/10 bg-white/5 hover:border-sky-400/40 hover:bg-white/10"
               : "border-slate-200 bg-white hover:border-sky-200 hover:shadow-sm"
-          } ${isCompact ? "sm:flex-1" : "h-full"}`}
+          } ${
+              isFooter
+                ? "sm:flex-1"
+                : placement === "hero"
+                  ? "sm:flex-1 lg:w-fit lg:max-w-[440px] lg:flex-none"
+                  : "h-full"
+            }`}
         >
           <span
             className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${
