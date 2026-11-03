@@ -618,10 +618,9 @@
 // export default Home;
 
 
-
-
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import TrustBadges from "../components/TrustBadges";
 import {
   Pause,
   Play,
@@ -732,12 +731,12 @@ const Hero = () => {
 
       {/* Hero content */}
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-3 pb-16 lg:px-5 lg:pb-20">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+        <div className="relative top-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
           <span className="brkt text-sm">&lt;/&gt;</span>
           Welcome to SoftCrowd Technologies
         </div>
 
-        <h1 className="mt-6 max-w-4xl font-serif text-3xl font-bold leading-[1.12] text-slate-50 sm:text-4xl md:text-5xl lg:text-6xl">
+        <h1 className="mt-12 max-w-3xl font-serif text-2xl font-bold leading-[1.12] text-slate-50 sm:text-[30.3px] md:text-[40.4px] lg:text-[50.5px]">
           Full-Stack Web, Mobile & Cloud Application Engineering
         </h1>
 
@@ -783,7 +782,13 @@ const Hero = () => {
             />
           </a>
         </div>
+        {/* 100% Code Ownership badge */}
+        <TrustBadges
+          placement="hero"
+          className="mt-5 max-w-2xl"
+        />
       </div>
+
 
       {/* Existing video play/pause control */}
       <button

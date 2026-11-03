@@ -307,7 +307,7 @@
 //------------------------------------------------
 
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 import logoFull from "../assets/images/softcrowd-logo-full.png";
@@ -427,14 +427,19 @@ const Header = () => {
             aria-label="Main navigation"
             className="hidden flex-1 items-center justify-end gap-6 pr-5 2xl:gap-7 xl:flex"
           >
+            
             {navItems.map((item) => (
-              <Link
+              <NavLink
                 key={item.label}
                 to={item.to}
-                className={`whitespace-nowrap text-[14px] font-semibold transition-colors 2xl:text-[15px] ${navTextClass}`}
+                className={({ isActive }) =>
+                  `whitespace-nowrap text-[14px] font-semibold transition-colors 2xl:text-[15px] ${
+                    isActive ? "text-sky-600" : navTextClass
+                  }`
+                }
               >
                 {item.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 

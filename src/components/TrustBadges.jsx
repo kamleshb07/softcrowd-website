@@ -32,23 +32,15 @@ const badgesByPlacement = {
   footer: ["code-ownership", "nda-protection"],
 };
 
-/**
- * Reusable trust/engineering commitments from the SoftCrowd redesign spec.
- *
- * placement options:
- * - "hero": 100% Code Ownership (below the primary Hero CTA)
- * - "booking": Mutual NDA Guaranteed (Contact / Booking section)
- * - "developers": Modern Engineering Standards (Dedicated Developers section)
- * - "footer": 100% Code Ownership + Mutual NDA Guaranteed (Footer)
- * - "all": all three badges in a responsive grid (default)
- */
 const TrustBadges = ({ placement = "all", className = "" }) => {
   const selectedIds = badgesByPlacement[placement];
+
   const visibleBadges = selectedIds
     ? trustBadgeItems.filter((badge) => selectedIds.includes(badge.id))
     : trustBadgeItems;
 
-  const isCompact = placement === "hero" || placement === "footer";
+  const isHero = placement === "hero";
+  const isCompact = isHero || placement === "footer";
   const isFooter = placement === "footer";
 
   return (
@@ -66,40 +58,50 @@ const TrustBadges = ({ placement = "all", className = "" }) => {
         <article
           key={id}
           role="listitem"
-          className={`flex min-w-0 items-start gap-3 rounded-xl border p-4 transition-colors sm:p-5 ${
-            isFooter
-              ? "border-white/10 bg-white/5 hover:border-sky-400/40 hover:bg-white/10"
-              : "border-slate-200 bg-white hover:border-sky-200 hover:shadow-sm"
-          } ${
-              isFooter
-                ? "sm:flex-1"
-                : placement === "hero"
-                  ? "sm:flex-1 lg:w-fit lg:max-w-[440px] lg:flex-none"
-                  : "h-full"
-            }`}
+          className={`flex min-w-0 gap-3 rounded-xl border transition-all duration-300 ${
+            isHero
+              ? "w-fit max-w-full items-center border-white/30 bg-white/10 p-3 backdrop-blur-md hover:bg-white/15 sm:max-w-[560px]"
+              : isFooter
+                ? "items-start border-white/10 bg-white/5 p-4 hover:border-sky-400/40 hover:bg-white/10 sm:flex-1 sm:p-5"
+                : "h-full items-start border-slate-200 bg-white p-4 hover:border-sky-200 hover:shadow-sm sm:p-5"
+          }`}
         >
           <span
             className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${
-              isFooter
-                ? "bg-sky-400/10 text-sky-300"
-                : "bg-sky-50 text-sky-600"
+              isHero
+                ? "bg-white/10 text-sky-400"
+                : isFooter
+                  ? "bg-sky-400/10 text-sky-300"
+                  : "bg-sky-50 text-sky-600"
             }`}
             aria-hidden="true"
           >
-            {createElement(Icon, { size: 20, strokeWidth: 1.8 })}
+            {createElement(Icon, {
+              size: 20,
+              strokeWidth: 1.8,
+            })}
           </span>
 
-          <div className="min-w-0">
+          <div
+            className={`min-w-0 ${
+              isHero ? "border-l border-white/30 pl-3 sm:pl-4" : ""
+            }`}
+          >
             <h3
               className={`text-sm font-semibold leading-5 ${
-                isFooter ? "text-white" : "text-slate-900"
+                isHero || isFooter ? "text-white" : "text-slate-900"
               }`}
             >
               {title}
             </h3>
+
             <p
-              className={`mt-1.5 text-xs leading-5 sm:text-sm sm:leading-6 ${
-                isFooter ? "text-white/65" : "text-slate-600"
+              className={`mt-1 text-xs leading-5 ${
+                isHero
+                  ? "text-white/75"
+                  : isFooter
+                    ? "text-white/65 sm:text-sm sm:leading-6"
+                    : "text-slate-600 sm:text-sm sm:leading-6"
               }`}
             >
               {description}
