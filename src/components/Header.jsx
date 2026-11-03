@@ -308,11 +308,60 @@
 
 
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import {
+  Menu,
+  X,
+  ArrowRight,
+  ChevronDown,
+  Code2,
+  Briefcase,
+  Building2,
+  Factory,
+  GraduationCap,
+  Rocket,
+} from "lucide-react";
 
 import logoFull from "../assets/images/softcrowd-logo-full.png";
 import logoFullWhite from "../assets/images/softcrowd-logo-full-white.png";
+
+const servicesMenu = [
+  {
+    label: "Development",
+    icon: Code2,
+    items: [
+      { title: "Custom Web Application Development", to: "/web-application" },
+      { title: "Digital Marketing Solution Provider", to: "/digital-marketing-solution-provider" },
+      { title: "Bulk SMS and Email Marketing", to: "/bulk-sms-and-email-marketing" },
+      { title: "Hire Web and Mobile App Developers", to: "/hire-web-and-mobile-app-developers" },
+    ],
+  },
+  {
+    label: "Career",
+    icon: Briefcase,
+    items: [{ title: "View Open Positions", to: "/careers" }],
+  },
+  {
+    label: "Corporate Training",
+    icon: Building2,
+    items: [{ title: "Corporate Training Program", to: "/corporate-training" }],
+  },
+  {
+    label: "Industrial Training",
+    icon: Factory,
+    items: [{ title: "Industrial Training Program", to: "/industrial-training" }],
+  },
+  {
+    label: "College Training",
+    icon: GraduationCap,
+    items: [{ title: "College Training Program", to: "/college-training" }],
+  },
+  {
+    label: "Internship",
+    icon: Rocket,
+    items: [{ title: "Internship Program", to: "/internship" }],
+  },
+];
 
 const navItems = [
   { label: "Solutions", to: "/solutions" },
@@ -331,6 +380,106 @@ const Logo = ({ dark }) => (
     className="h-10 w-auto object-contain lg:h-11"
   />
 );
+
+const ServicesMenu = ({ lightHeader }) => {
+  const [activeCategory, setActiveCategory] = useState(0);
+  const [open, setOpen] = useState(false);
+  const current = servicesMenu[activeCategory];
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((previous) => !previous)}
+        aria-expanded={open}
+        className={`flex items-center gap-1.5 whitespace-nowrap text-[14px] font-semibold transition-colors 2xl:text-[15px] ${
+          lightHeader
+            ? "text-slate-800 hover:text-sky-600"
+            : "text-white hover:text-sky-300"
+        }`}
+      >
+        Services
+        <ChevronDown
+          size={16}
+          className={`transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {open && (
+        <div className="absolute left-1/2 top-full z-50 w-[min(1180px,95vw)] -translate-x-1/2 pt-4">
+          <div className="flex min-h-[420px] overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-2xl">
+
+            <div className="w-72 shrink-0 bg-slate-900 py-6">
+              {servicesMenu.map((category, index) => (
+                <button
+                  key={category.label}
+                  type="button"
+                  onMouseEnter={() => setActiveCategory(index)}
+                  onClick={() => setActiveCategory(index)}
+                  className={`flex w-full items-center gap-3 border-l-[3px] px-6 py-4 text-left text-[15px] font-medium transition-colors ${
+                    activeCategory === index
+                      ? "border-sky-400 bg-white/10 text-white"
+                      : "border-transparent text-white/70 hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  <category.icon size={19} />
+                  {category.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex-1 p-8">
+              <p className="text-xl font-semibold text-slate-900">
+                {current.label}
+              </p>
+              <div className="mt-2 h-px w-16 bg-sky-500" />
+
+              <ul className="mt-6 space-y-2">
+                {current.items.map((item) => (
+                  <li key={item.title}>
+                    <Link
+                      to={item.to}
+                      onClick={() => setOpen(false)}
+                      className="block rounded-lg px-4 py-3 text-[15px] font-medium text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-600"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="w-72 shrink-0 border-l border-slate-100 bg-slate-50 p-7">
+              <p className="text-lg font-semibold text-slate-900">
+                Built in Nashik
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-slate-500">
+                One team behind every service, from custom development to
+                training programs.
+              </p>
+              <Link
+                to="/about"
+                onClick={() => setOpen(false)}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-600 hover:underline"
+              >
+                Meet the team
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const WHATSAPP_LINK =
+  "https://wa.me/917447444874?text=Hi%20Softcrowd%2C%20I%20have%20an%20Enquiry%20about%20your%20services.%20Please%20share%20more%20details.";
 
 const WhatsAppIcon = () => (
   <svg
@@ -425,13 +574,31 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav
             aria-label="Main navigation"
-            className="hidden flex-1 items-center justify-end gap-6 pr-5 2xl:gap-7 xl:flex"
+            className="hidden flex-1 items-center justify-end gap-4 pr-4 xl:flex"
           >
+            <Link to="/" className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}>
+              Home
+            </Link>
+
+            <Link to="/about" className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}>
+              About us
+            </Link>
+
+            <ServicesMenu lightHeader={lightHeader} />
+
+            <Link to="/blogs" className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}>
+              Blogs
+            </Link>
+
+            <Link to="/contact" className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}>
+              Contact us
+            </Link>
+
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.to}
-                className={`whitespace-nowrap text-[14px] font-semibold transition-colors 2xl:text-[15px] ${navTextClass}`}
+                className={`whitespace-nowrap text-[14px] font-semibold transition-colors ${navTextClass}`}
               >
                 {item.label}
               </Link>
@@ -444,7 +611,7 @@ const Header = () => {
 
             {/* Schedule Technical Call */}
             <Link
-              to="/#schedule-call"
+              to="/schedule-call"
               className={`hidden h-[48px] items-center justify-center gap-2 whitespace-nowrap rounded-lg border px-5 text-[14px] font-semibold transition-all 2xl:px-6 lg:inline-flex ${outlineButtonClass}`}
             >
               Schedule Technical Call
@@ -491,25 +658,63 @@ const Header = () => {
           {/* Menu Links */}
           <nav
             aria-label="Expanded navigation"
-            className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center gap-2 px-7 py-10 sm:px-12"
+            className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-3 px-7 py-10 sm:px-12"
           >
-            {navItems.map((item, index) => (
+            {/* Original Navigation */}
+            <Link to="/" onClick={closeMobileMenu} className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400">
+              Home
+            </Link>
+
+            <Link to="/about" onClick={closeMobileMenu} className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400">
+              About us
+            </Link>
+
+            {/* Services and all its links */}
+            <div className="border-b border-white/10 py-3">
+              <p className="mb-3 text-xl font-semibold text-white">Services</p>
+
+              {servicesMenu.map((category) => (
+                <div key={category.label} className="mb-4">
+                  <p className="mb-2 text-sm font-semibold text-sky-400">
+                    {category.label}
+                  </p>
+
+                  {category.items.map((item) => (
+                    <Link
+                      key={item.title}
+                      to={item.to}
+                      onClick={closeMobileMenu}
+                      className="block py-2 pl-3 text-base text-white/75 hover:text-sky-400"
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <Link to="/blogs" onClick={closeMobileMenu} className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400">
+              Blogs
+            </Link>
+
+            <Link to="/contact" onClick={closeMobileMenu} className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400">
+              Contact us
+            </Link>
+
+            {/* New Navigation */}
+            {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.to}
                 onClick={closeMobileMenu}
-                className="flex items-center border-b border-white/10 py-5 text-xl font-semibold text-white transition-colors hover:text-sky-400 sm:text-2xl"
+                className="border-b border-white/10 py-3 text-xl font-semibold text-white hover:text-sky-400"
               >
-                <span className="mr-5 text-sm font-medium text-sky-500">
-                  0{index + 1}
-                </span>
-
                 {item.label}
               </Link>
             ))}
 
             <Link
-              to="/#schedule-call"
+              to="/schedule-call"
               onClick={closeMobileMenu}
               className="mt-6 flex min-h-[52px] items-center justify-center gap-3 rounded-lg border border-white/40 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-slate-950"
             >

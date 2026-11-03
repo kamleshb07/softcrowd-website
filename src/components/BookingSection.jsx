@@ -1,5 +1,6 @@
 
 import { CalendarDays, Clock, Video, ArrowUpRight } from "lucide-react";
+import TrustBadges from "./TrustBadges";
 
 // Add your real Calendly or Cal.com URL here when available.
 const BOOKING_URL = "";
@@ -113,6 +114,7 @@ const BookingSection = () => {
             )}
           </div>
         </div>
+        <TrustBadges placement="booking" className="mt-10" />
       </div>
     </section>
   );

@@ -650,6 +650,7 @@ import {
 import heroVideo from "../assets/images/softcrowd-hero-vid.mp4";
 import heroPoster from "../assets/images/why-choose-us.jpg";
 import aboutImage from "../assets/images/why-choose-us.jpg";
+import TrustBadges from "../components/TrustBadges";
 
 /* --------------------------------- Data --------------------------------- */
 
@@ -762,7 +763,7 @@ const Hero = () => {
         {/* Two CTA buttons */}
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
-            href="#schedule-call"
+            href="/schedule-call"
             className="group inline-flex w-fit items-center justify-center gap-3 rounded-lg bg-sky-600 px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-sky-700"
           >
             Schedule Technical Call
@@ -773,7 +774,7 @@ const Hero = () => {
           </a>
 
           <a
-            href="#tech-stack"
+            href="/tech-stack"
             className="group inline-flex w-fit items-center justify-center gap-3 border border-white/40 px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-slate-900"
           >
             View Tech Stack & Projects
@@ -783,6 +784,7 @@ const Hero = () => {
             />
           </a>
         </div>
+        <TrustBadges placement="hero" className="mt-6" />
       </div>
 
       {/* Existing video play/pause control */}

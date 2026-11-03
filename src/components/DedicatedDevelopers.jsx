@@ -5,6 +5,7 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import TrustBadges from "./TrustBadges";
 
 const developerRoles = [
   {
@@ -115,13 +116,14 @@ const DedicatedDevelopers = () => {
           </div>
 
           <a
-            href="#schedule-call"
+            href="/schedule-call"
             className="inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-lg bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-sky-600"
           >
             Schedule a Technical Call
             <ArrowRight size={17} />
           </a>
         </div>
+        <TrustBadges placement="developers" className="mt-10" />
       </div>
     </section>
   );
