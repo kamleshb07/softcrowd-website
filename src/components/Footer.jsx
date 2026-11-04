@@ -392,6 +392,7 @@
 
 
 import React from "react";
+import TrustBadges from "./TrustBadges";
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail } from "lucide-react";
 import logoFullWhite from "../assets/images/softcrowd-logo-full-white.png";
@@ -432,7 +433,10 @@ const socialLinks = [
 
 // "Important Links" — same set as the reference, minus Terms & Privacy.
 const importantLinks = [
+  { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
+  { label: "Tech Stack", to: "/tech-stack" },
+  { label: "Case Studies", to: "/case-studies" },
   { label: "Blogs", to: "/blogs" },
   { label: "Contact Us", to: "/contact" },
   { label: "Careers", to: "/careers" },
@@ -579,7 +583,10 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-        </div>
+          </div>
+
+        {/* Trust Badges */}
+        <TrustBadges placement="footer" className="mt-8" />
 
         {/* Bottom bar */}
         <div className="mt-8 flex flex-col gap-4 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
