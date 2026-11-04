@@ -327,7 +327,7 @@ const Logo = ({ dark }) => (
   <img
     src={dark ? logoFull : logoFullWhite}
     alt="SoftCrowd Technologies"
-    className="h-10 w-auto object-contain lg:h-11"
+    className="h-8 w-auto object-contain lg:h-9"
   />
 );
 
@@ -411,7 +411,15 @@ const Header = () => {
             ? "bg-white shadow-sm"
             : "bg-transparent"
         }`}
-      ><div className="mx-auto flex min-h-[78px] max-w-[1440px] items-center justify-between gap-5 px-5 py-3 xl:px-6">
+        >
+        {/* --------------Top Bar - Company Phone Number----------------
+          <div className="w-full bg-slate-900 px-5 py-2 text-right text-sm text-white">
+            <a href="tel:+917447444874" className="hover:text-sky-300">
+              Call Us: +91 7447444874
+            </a>
+          </div> */}
+
+          <div className="mx-auto flex min-h-[78px] max-w-[1440px] items-center justify-between gap-5 px-5 py-3 xl:px-6">
           {/* Company Logo */}
           <Link
             to="/"

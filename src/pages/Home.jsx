@@ -731,7 +731,7 @@ const Hero = () => {
 
       {/* Hero content */}
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-3 pb-16 lg:px-5 lg:pb-20">
-        <div className="relative top-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+        <div className="relative top-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
           <span className="brkt text-sm">&lt;/&gt;</span>
           Welcome to SoftCrowd Technologies
         </div>

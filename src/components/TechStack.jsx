@@ -4,46 +4,61 @@ import React from "react";
 const frontendTechnologies = [
   {
     name: "React.js",
-    description: "Modern, component-based web application development.",
+    description:
+      "Single-page applications (SPAs), Next.js server-side rendering (SSR), Redux state management, and reusable component libraries.",
   },
   {
     name: "Flutter",
-    description: "Cross-platform mobile application development.",
+    description:
+      "Cross-platform application development for iOS and Android.",
   },
   {
-    name: "Native iOS / Android",
-    description: "Platform-specific mobile application development.",
+    name: "Native iOS (Swift)",
+    description:
+      "Native iOS application development using Swift.",
+  },
+  {
+    name: "Android (Kotlin / Java)",
+    description:
+      "Native Android application development using Kotlin and Java.",
   },
   {
     name: "Tailwind CSS",
-    description: "Utility-first responsive interface styling.",
+    description:
+      "Responsive UI development using utility classes, Flexbox, and CSS Grid.",
   },
   {
-    name: "Bootstrap",
-    description: "Responsive UI components and layouts.",
+    name: "Bootstrap 5",
+    description:
+      "Responsive layouts, reusable UI components, and mobile-first design.",
   },
 ];
 
 const backendTechnologies = [
   {
     name: "Node.js",
-    description: "Scalable backend services and REST APIs.",
+    description:
+      "Express.js, NestJS, asynchronous microservices, and REST / GraphQL API development.",
   },
   {
     name: "PHP / Laravel",
-    description: "Structured backend application development.",
+    description:
+      "MVC architecture, Eloquent ORM, and scalable SaaS backend development.",
   },
   {
     name: "MongoDB",
-    description: "Flexible document-oriented database solutions.",
+    description:
+      "NoSQL database solutions, aggregation pipelines, and indexing.",
   },
   {
     name: "MySQL",
-    description: "Reliable relational database management.",
+    description:
+      "Relational database schema design and query optimization.",
   },
   {
     name: "PostgreSQL",
-    description: "Advanced relational database solutions.",
+    description:
+      "Relational database schema design and query optimization.",
   },
 ];
 
@@ -72,7 +87,7 @@ const TechStack = () => {
             Our Technology Expertise
           </span>
 
-          <h2 className="mt-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mt-4 text-3xl font-bold leading-tight text-blue-600 sm:text-4xl lg:text-5xl">
             Built With Modern Technologies
           </h2>
 

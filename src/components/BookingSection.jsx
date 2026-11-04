@@ -90,17 +90,15 @@ const BookingSection = () => {
           <span className="inline-block rounded-full bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-wider text-blue-600">
             Let's Connect
           </span>
-
-          <h2 className="mt-5 text-3xl font-bold text-slate-900 sm:text-4xl lg:text-5xl">
-            Schedule a Technical
-            <span className="text-blue-600"> Consultation</span>
+          <h2 className="mt-5 text-3xl font-bold text-blue-500 sm:text-4xl lg:text-5xl">
+            Schedule a Technical Scoping Call
           </h2>
 
           <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg">
-            Tell us about your project, discuss your technical requirements,
-            and explore how our engineering team can help.
+            Discuss architecture, tech stack selection, sprint timelines, and estimates.
           </p>
         </div>
+
 
         {/* Booking Layout */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">

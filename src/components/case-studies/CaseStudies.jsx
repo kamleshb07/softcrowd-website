@@ -63,12 +63,6 @@ const CaseStudies = () => {
           </p>
         </div>
 
-        {import.meta.env.DEV && developmentSampleCaseStudies.length > 0 && (
-          <div className="mx-auto mt-8 max-w-3xl rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-center text-sm leading-6 text-amber-900">
-            <strong>Development preview only:</strong> the cards below are temporary UI samples, not real SoftCrowd projects. They are excluded from production builds. Replace them with company-approved project details before release.
-          </div>
-        )}
-
         <div className="mt-9">
           <CaseStudyFilters
             activeFilter={activeFilter}

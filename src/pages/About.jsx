@@ -406,6 +406,19 @@ const OurStory = () => (
   </section>
 );
 
+const StatCounter = ({ stat }) => {
+  const { ref, display } = useCountUp(stat.value);
+
+  return (
+    <div ref={ref} className="text-center">
+      <div className="font-serif text-5xl font-semibold text-sky-500">
+        {display}
+        <span>+</span>
+      </div>
+      <p className="mt-2 text-sm text-slate-500">{stat.label}</p>
+    </div>
+  );
+};
 /* --------------------------------- Dedicated team / stats --------------------------------- */
 
 const DedicatedTeam = () => (
@@ -427,18 +440,9 @@ const DedicatedTeam = () => (
     </div>
 
     <div className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-10 sm:grid-cols-3">
-      {STATS.map((stat) => {
-        const { ref, display } = useCountUp(stat.value);
-        return (
-          <div key={stat.label} ref={ref} className="text-center">
-            <div className="font-serif text-5xl font-semibold text-sky-500">
-              {display}
-              <span>+</span>
-            </div>
-            <p className="mt-2 text-sm text-slate-500">{stat.label}</p>
-          </div>
-        );
-      })}
+      {STATS.map((stat) => (
+        <StatCounter key={stat.label} stat={stat} />
+      ))}
     </div>
   </section>
 );

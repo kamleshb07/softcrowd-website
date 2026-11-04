@@ -102,11 +102,6 @@ const CaseStudyModal = ({ project, onClose }) => {
         </div>
 
         <div className="overflow-y-auto px-5 py-6 sm:px-8 sm:py-8">
-          {project.isDevelopmentSample && (
-            <div className="mb-6 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">
-              <strong>Development sample only.</strong> This is temporary UI content, not a real SoftCrowd project. Replace it with company-approved details before publishing.
-            </div>
-          )}
 
           <p
             id="case-study-modal-summary"

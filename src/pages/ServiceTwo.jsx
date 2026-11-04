@@ -85,7 +85,7 @@ const ServiceTwo = () => {
                 />
               </Link>
               <a
-                href="tel:7447478744"
+                href="tel:7447444874"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-white/60 transition hover:text-white"
               >
                 <Phone size={15} /> +91 74474 44874

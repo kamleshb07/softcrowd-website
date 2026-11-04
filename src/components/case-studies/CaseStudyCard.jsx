@@ -31,11 +31,6 @@ const CaseStudyCard = ({ project, onSelect }) => {
             </div>
           )}
 
-          {project.isDevelopmentSample && (
-            <span className="absolute left-4 top-4 rounded-full border border-amber-300/40 bg-amber-300/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-amber-100">
-              Development sample
-            </span>
-          )}
         </div>
 
         <div className="flex flex-1 flex-col p-5 sm:p-6">
