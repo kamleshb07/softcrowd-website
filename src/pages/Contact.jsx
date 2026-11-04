@@ -529,7 +529,7 @@
 
 // export default Contact;
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   ArrowRight,
@@ -588,13 +588,19 @@ const Contact = () => {
     message: '',
   });
 
-  // If the visitor is already on the page and clicks another "Contact Us"
-  // link with a different ?type=, keep the dropdown in sync.
-  useEffect(() => {
+  // Keep the dropdown in sync when the URL inquiry type changes.
+  const [previousTypeFromUrl, setPreviousTypeFromUrl] = useState(typeFromUrl);
+
+  if (typeFromUrl !== previousTypeFromUrl) {
+    setPreviousTypeFromUrl(typeFromUrl);
+
     if (typeFromUrl && inquiryTypes.includes(typeFromUrl)) {
-      setFormData((prev) => ({ ...prev, inquiryType: typeFromUrl }));
+      setFormData((prev) => ({
+        ...prev,
+        inquiryType: typeFromUrl,
+      }));
     }
-  }, [typeFromUrl]);
+  }
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
