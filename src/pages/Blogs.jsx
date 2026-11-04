@@ -772,11 +772,11 @@ const ShoppingCart = (props) => (
   </svg>
 );
 
-// ✅ EXPORTED slug helper
+// eslint-disable-next-line react-refresh/only-export-components
 export const slugify = (text) =>
   text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
-// ✅ EXPORTED blog posts array — all 50 posts, matching softcrowdtechnologies.com/blogs/
+// eslint-disable-next-line react-refresh/only-export-components
 export const blogPosts = [
   {
     title: "User-Centric Design: Creating Intuitive and Engaging Software Interfaces",
